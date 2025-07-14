@@ -23,7 +23,7 @@ from main.resale_flat_prices_2017 r ;
 Select the average price per sqm for flats in each town.
 
 ```sql
-select town, round(avg(resale_price/floor_area_sqm)) as avg_price_per_sqm,
+select town, round(avg(resale_price/floor_area_sqm)) as avg_price_per_sqm
 from main.resale_flat_prices_2017 r 
 group by town
 order by avg_price_per_sqm;
@@ -40,7 +40,7 @@ Categorize flats into price ranges and count how many flats fall into each categ
 
 ```sql
 select case when resale_price < 400000 then 'Budget'
-	        when resale_price < 700000 then 'Mid-Range'
+	        when resale_price <=700000 then 'Mid-Range'
 	        else 'Premium' end as price_range, 
 	   count(*) as count_of_units
 from main.resale_flat_prices_2017 r 
